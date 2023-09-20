@@ -60,20 +60,40 @@ function convertPlayerChoice() {
     }
 }
 
+// convert computer choice to string
+let computerChoiceString;
 
+function convertComputerChoice() {
+    switch(computerChoice) {
+        case 0:
+            computerChoiceString = 'rock';
+            break;
+
+        case 1:
+            computerChoiceString = 'paper';
+            break;
+        
+        case 2:
+            computerChoiceString = 'scissors';
+            break;
+    }
+}
+
+convertComputerChoice();
 convertPlayerChoice();
+
 console.log(`playerInt: ${playerInt}`);
 
 function compareChoices(playerInt, computerChoice) {
     let outcome = computerChoice - playerInt;
     if (outcome === 1 || outcome === -2) {
-        console.log(`You played ${playerInput}, your opponent played ${computerChoice}`);
+        console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`);
     }
     else if (outcome === 0) {
         console.log(`You both played ${playerInput}`);
     }
     else {
-        console.log(`You beat your opponent!`);
+        console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`);
     }
 }
 
