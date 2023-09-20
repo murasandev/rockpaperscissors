@@ -34,4 +34,47 @@ function toLowerCasePlayerInput() {
 }
 
 toLowerCasePlayerInput();
-console.log(playerInput);
+
+// change playerInput to choice
+let playerInt;
+
+function convertPlayerChoice() {
+    switch(playerInput) {
+        case "rock":
+            console.log(`You played ${playerInput}`);
+            playerInt = 0;
+            break;
+        
+        case "paper":
+            console.log("You played paper!");
+            playerInt = 1;
+            break;
+
+        case "scissors":
+            console.log("You played scissors");
+            playerInt = 2;
+            break;
+
+        default:
+            console.log("Enter a valid option");
+    }
+}
+
+
+convertPlayerChoice();
+console.log(`playerInt: ${playerInt}`);
+
+function compareChoices(playerInt, computerChoice) {
+    let outcome = computerChoice - playerInt;
+    if (outcome === 1 || outcome === -2) {
+        console.log(`You played ${playerInput}, your opponent played ${computerChoice}`);
+    }
+    else if (outcome === 0) {
+        console.log(`You both played ${playerInput}`);
+    }
+    else {
+        console.log(`You beat your opponent!`);
+    }
+}
+
+compareChoices(playerInt, computerChoice);
