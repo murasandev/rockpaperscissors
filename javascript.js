@@ -13,11 +13,18 @@
 //get random number for computer
 let computerChoice;
 
-function getComputerChoice(max = 3){
+function getComputerChoice(max = 3) {
     console.log(computerChoice = Math.floor(Math.random() * max));
 }
 
 getComputerChoice();
-console.log(computerChoice);
 
 // get input from player
+let playerInput;
+
+function getPlayerInput() {
+    playerInput = prompt("Enter \"Rock\", \"Paper\", or \"Scissors\": ");
+}
+
+getPlayerInput();
+console.log(playerInput);
