@@ -11,11 +11,13 @@
 // Once player or computer reach a score of 5, end game
 
 //get random number for computer
-
+let computerChoice;
 
 function getComputerChoice(max = 3){
-    let computerChoice = Math.floor(Math.random() * max);
-    console.log(computerChoice);
+    console.log(computerChoice = Math.floor(Math.random() * max));
 }
 
 getComputerChoice();
+console.log(computerChoice);
+
+// get input from player
