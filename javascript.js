@@ -27,4 +27,11 @@ function getPlayerInput() {
 }
 
 getPlayerInput();
+
+// convert playerInput to lowercase
+function toLowerCasePlayerInput() {
+    playerInput = playerInput.toLowerCase();
+}
+
+toLowerCasePlayerInput();
 console.log(playerInput);
