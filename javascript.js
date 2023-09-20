@@ -81,26 +81,31 @@ function convertComputerChoice() {
     }
 }
 
-
-
 console.log(`playerInt: ${playerInt}`);
 
 function compareChoices(playerInt, computerChoice) {
     let outcome = computerChoice - playerInt;
-    if (outcome === 1 || outcome === -2) {
-        console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`);
-        ++opponentScore;
-    }
-    else if (outcome === 0) {
-        console.log(`You both played ${playerInput}`);
-    }
-    else {
-        console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`);
-        ++playerScore;
+
+    switch(outcome) {
+        // opponent win condition
+        case 1:
+        case -2:
+            console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`);
+            ++opponentScore;
+            break;
+
+        // tie condition
+        case 0:
+            console.log(`You both played ${playerInput}`);
+            break;
+
+        // player win condition
+        default:
+            console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`);
+            ++playerScore;
+            break;
     }
 }
-
-
 
 // run program through loop until you or opponent reach 5 pts
 let playerScore = 0,
