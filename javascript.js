@@ -1,27 +1,20 @@
-// Goal: Create a rock paper scissors game against the computer
-// First to 5, wins the game
-
-// Write function to play a single round of rps.
-// function takes two parameters (player selection, computer selection)
-// return/declare player and computer selections
-// return/declare winner of the round
-
-// Run game function through a loop until player or computer reach 5 wins
-// After each round add score to round winners total score.
-// Once player or computer reach a score of 5, end game
-
 let isPlaying = true;
 
-//get random number for computer
 let computerChoice;
+let computerChoiceString;
 
+let playerInput;
+let playerInt;
+
+let playerScore = 0,
+    opponentScore = 0;
+
+//get random number for computer
 function getComputerChoice(max = 3) {
     console.log(computerChoice = Math.floor(Math.random() * max));
 }
 
 // get input from player
-let playerInput;
-
 function getPlayerInput() {
     playerInput = prompt("Enter \"Rock\", \"Paper\", or \"Scissors\": ");
 }
@@ -34,8 +27,6 @@ function toLowerCasePlayerInput() {
 }
 
 // change playerInput to choice
-let playerInt;
-
 function convertPlayerChoice() {
     switch(playerInput) {
         case "rock":
@@ -63,8 +54,6 @@ function convertPlayerChoice() {
 }
 
 // convert computer choice to string
-let computerChoiceString;
-
 function convertComputerChoice() {
     switch(computerChoice) {
         case 0:
@@ -80,8 +69,6 @@ function convertComputerChoice() {
             break;
     }
 }
-
-console.log(`playerInt: ${playerInt}`);
 
 function determineRoundWinner(playerInt, computerChoice) {
     let outcome = computerChoice - playerInt;
@@ -108,9 +95,6 @@ function determineRoundWinner(playerInt, computerChoice) {
 }
 
 // run program through loop until you or opponent reach 5 pts
-let playerScore = 0,
-    opponentScore = 0;
-
 while (playerScore < 5 && opponentScore < 5 && isPlaying) {
     getComputerChoice();
     getPlayerInput();
