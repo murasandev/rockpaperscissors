@@ -10,14 +10,14 @@
 // After each round add score to round winners total score.
 // Once player or computer reach a score of 5, end game
 
+let isPlaying = true;
+
 //get random number for computer
 let computerChoice;
 
 function getComputerChoice(max = 3) {
     console.log(computerChoice = Math.floor(Math.random() * max));
 }
-
-getComputerChoice();
 
 // get input from player
 let playerInput;
@@ -26,14 +26,12 @@ function getPlayerInput() {
     playerInput = prompt("Enter \"Rock\", \"Paper\", or \"Scissors\": ");
 }
 
-getPlayerInput();
-
 // convert playerInput to lowercase
 function toLowerCasePlayerInput() {
-    playerInput = playerInput.toLowerCase();
+    if (playerInput !== null) {
+        playerInput = playerInput.toLowerCase();
+    }
 }
-
-toLowerCasePlayerInput();
 
 // change playerInput to choice
 let playerInt;
@@ -41,22 +39,26 @@ let playerInt;
 function convertPlayerChoice() {
     switch(playerInput) {
         case "rock":
-            console.log(`You played ${playerInput}`);
             playerInt = 0;
             break;
         
         case "paper":
-            console.log("You played paper!");
             playerInt = 1;
             break;
 
         case "scissors":
-            console.log("You played scissors");
             playerInt = 2;
             break;
 
+        case null:
+            isPlaying = false;
+            break;
+
         default:
-            console.log("Enter a valid option");
+            alert("Enter a valid option");
+            getPlayerInput();
+            toLowerCasePlayerInput();
+            convertPlayerChoice();
     }
 }
 
@@ -79,8 +81,7 @@ function convertComputerChoice() {
     }
 }
 
-convertComputerChoice();
-convertPlayerChoice();
+
 
 console.log(`playerInt: ${playerInt}`);
 
@@ -88,13 +89,32 @@ function compareChoices(playerInt, computerChoice) {
     let outcome = computerChoice - playerInt;
     if (outcome === 1 || outcome === -2) {
         console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`);
+        ++opponentScore;
     }
     else if (outcome === 0) {
         console.log(`You both played ${playerInput}`);
     }
     else {
         console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`);
+        ++playerScore;
     }
 }
 
-compareChoices(playerInt, computerChoice);
+
+
+// run program through loop until you or opponent reach 5 pts
+let playerScore = 0,
+    opponentScore = 0;
+
+while (playerScore < 5 && opponentScore < 5 && isPlaying) {
+    getComputerChoice();
+    getPlayerInput();
+    toLowerCasePlayerInput();
+    convertPlayerChoice();
+    convertComputerChoice();
+    if (isPlaying) {
+        compareChoices(playerInt, computerChoice);
+    }
+    
+    console.log(`Player Score: ${playerScore}, Opponent Score: ${opponentScore}`);
+}
