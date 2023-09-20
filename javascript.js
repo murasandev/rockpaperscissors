@@ -9,3 +9,13 @@
 // Run game function through a loop until player or computer reach 5 wins
 // After each round add score to round winners total score.
 // Once player or computer reach a score of 5, end game
+
+//get random number for computer
+
+
+function getComputerChoice(max = 3){
+    let computerChoice = Math.floor(Math.random() * max);
+    console.log(computerChoice);
+}
+
+getComputerChoice();
