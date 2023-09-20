@@ -83,7 +83,7 @@ function convertComputerChoice() {
 
 console.log(`playerInt: ${playerInt}`);
 
-function compareChoices(playerInt, computerChoice) {
+function determineRoundWinner(playerInt, computerChoice) {
     let outcome = computerChoice - playerInt;
 
     switch(outcome) {
@@ -118,7 +118,7 @@ while (playerScore < 5 && opponentScore < 5 && isPlaying) {
     convertPlayerChoice();
     convertComputerChoice();
     if (isPlaying) {
-        compareChoices(playerInt, computerChoice);
+        determineRoundWinner(playerInt, computerChoice);
     }
     
     console.log(`Player Score: ${playerScore}, Opponent Score: ${opponentScore}`);
