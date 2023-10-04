@@ -11,7 +11,9 @@ body {
     background-image: url("./images/pokemonBG.jpeg");
     background-position-x: center;
     background-size: cover;
-    height: 100vh;
+    
+    /* figure out how to keep bg img to extend when flex wrapping trainers */
+    height: 100vh; 
 
     display: flex;
     flex-direction: column;
@@ -21,6 +23,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .trainer-1,
