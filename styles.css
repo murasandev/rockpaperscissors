@@ -12,7 +12,38 @@ body {
     background-position-x: center;
     background-size: cover;
     height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 }
+
+.trainer-select {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.trainer-1,
+.trainer-2,
+.trainer-3,
+.trainer-4 {
+    border: solid;
+    border-color: black;
+    height: 500px;
+    width: 300px;
+    border-width: 1px;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 249, 50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trainer-img img {
+    height: 250px;
+}
+
 h1 {
     text-align: center;
     margin: 0;
