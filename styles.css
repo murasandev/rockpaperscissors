@@ -48,7 +48,8 @@ body {
     background-color: rgba(255, 253, 249, 0.685);
 }
 
-.trainer-img img {
+.trainer-img img,
+.trainer-back-img img {
     height: 250px;
 }
 
@@ -60,4 +61,36 @@ h1 {
     text-align: center;
     margin: 0;
     padding: 50px;
+}
+
+.game-container {
+    /* background-color: white; */
+    height: 75vh;
+    width: 500px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.opponent-container,
+.player-container {
+    display: flex;
+    height: 50%;
+    align-items: center;
+    margin: 25px;
+}
+
+.player-container {
+    background-color: blue;
+}
+
+.opponent-container {
+    background-color: red;
+    align-self: flex-end;
+}
+
+.player-abil-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

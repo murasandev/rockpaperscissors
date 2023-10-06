@@ -111,14 +111,19 @@ while (playerScore < 5 && opponentScore < 5 && isPlaying) {
 const startButton = document.querySelector("#start-button");
     
 startButton.addEventListener('click', () => {
-    goToSelectScreen();
+    enableSelectScreen();
     startButton.style.display = "none";
 });
 
-function goToSelectScreen() {
-    let trainerSelectScreen = document.querySelector(".trainer-select");
+// Control Trainer Select Screen
+let trainerSelectScreen = document.querySelector(".trainer-select");
 
+function enableSelectScreen() {
     trainerSelectScreen.style.display = "flex";
+}
+
+function disableSelectScreen() {
+    trainerSelectScreen.style.display = "none";
 }
 
 const trainer1SelectButton = document.querySelector(".trainer-1");
@@ -128,16 +133,31 @@ const trainer4SelectButton = document.querySelector(".trainer-4");
 
 trainer1SelectButton.addEventListener("click", () => {
     alert(trainer1SelectButton.className);
+    playGame();
 });
 
 trainer2SelectButton.addEventListener("click", () => {
     alert(trainer2SelectButton.className);
+    playGame();
 })
 
 trainer3SelectButton.addEventListener("click", () => {
     alert(trainer3SelectButton.className);
+    playGame();
 })
 
 trainer4SelectButton.addEventListener("click", () => {
     alert(trainer4SelectButton.className);
+    playGame();
 })
+
+const gameContainer = document.querySelector(".game-container");
+
+function enableGameContainer() {
+    gameContainer.style.display = "flex";
+}
+
+function playGame() {
+    disableSelectScreen();
+    enableGameContainer();
+}
