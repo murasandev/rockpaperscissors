@@ -107,3 +107,22 @@ while (playerScore < 5 && opponentScore < 5 && isPlaying) {
     
     console.log(`Player Score: ${playerScore}, Opponent Score: ${opponentScore}`);
 }
+
+const startButton = document.querySelector("#start-button");
+    
+startButton.addEventListener('click', () => {
+    startGame();
+    startButton.style.display = "none";
+});
+
+function startGame() {
+    let trainerSelectScreen = document.querySelector(".trainer-select");
+
+    trainerSelectScreen.style.display = "flex";
+}
+
+const trainerSelectButton = document.querySelector(".trainer-1");
+
+trainerSelectButton.addEventListener("click", () => {
+    alert(trainerSelectButton.className);
+});
