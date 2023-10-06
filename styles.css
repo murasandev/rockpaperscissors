@@ -82,7 +82,8 @@ h1 {
 }
 
 .player-container {
-    /* background-color: blue; */
+    background-color: rgba(255, 253, 249, 0.5);
+    border-radius: 10px;
 }
 
 .opponent-container {
@@ -114,7 +115,7 @@ h1 {
 }
 
 .player-abilities {
-    background-color: rgba(226, 225, 218, 0.753);
+    background-color: whitesmoke;
     height: 100px;
     width: 250px;
     border-radius: 10px;
