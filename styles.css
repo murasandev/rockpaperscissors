@@ -128,3 +128,12 @@ h1 {
     font-size: 10px;
     margin: 0 10px;
 }
+
+.player-abilities button {
+    background-color: whitesmoke;
+    border: none;
+}
+
+.player-abilities button:hover {
+    text-decoration: underline;
+}
