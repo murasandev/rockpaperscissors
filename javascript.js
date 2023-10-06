@@ -46,7 +46,7 @@ function convertPlayerChoice() {
             break;
 
         default:
-            alert("Enter a valid option");
+            // alert("Enter a valid option");
             getPlayerInput();
             toLowerCasePlayerInput();
             convertPlayerChoice();
@@ -132,22 +132,22 @@ const trainer3SelectButton = document.querySelector(".trainer-3");
 const trainer4SelectButton = document.querySelector(".trainer-4");
 
 trainer1SelectButton.addEventListener("click", () => {
-    alert(trainer1SelectButton.className);
+    // alert(trainer1SelectButton.className);
     playGame();
 });
 
 trainer2SelectButton.addEventListener("click", () => {
-    alert(trainer2SelectButton.className);
+    // alert(trainer2SelectButton.className);
     playGame();
 })
 
 trainer3SelectButton.addEventListener("click", () => {
-    alert(trainer3SelectButton.className);
+    // alert(trainer3SelectButton.className);
     playGame();
 })
 
 trainer4SelectButton.addEventListener("click", () => {
-    alert(trainer4SelectButton.className);
+    // alert(trainer4SelectButton.className);
     playGame();
 })
 
@@ -160,4 +160,43 @@ function enableGameContainer() {
 function playGame() {
     disableSelectScreen();
     enableGameContainer();
+}
+
+// Set pokemon image to match player choice
+const pokemonContainer = document.querySelector(".trainer-pokemon");
+
+let playerPokemon = document.createElement("img");
+playerPokemon.style.height = "100px";
+
+const firePokemonBtn = document.querySelector(".fire-pokemon-btn");
+const waterPokemonBtn = document.querySelector(".water-pokemon-btn");
+const leafPokemonBtn = document.querySelector(".leaf-pokemon-btn");
+
+let pokeType;
+
+firePokemonBtn.addEventListener("click", () => {
+    pokeType = "fire";
+    playRound(pokeType);
+})
+
+waterPokemonBtn.addEventListener("click", () => {
+    pokeType = "water";
+    playRound(pokeType);
+})
+
+function playRound(pokeType){
+    switch (pokeType) {
+        case "fire":
+            playerPokemon.src = "./images/charmander.png";
+            pokemonContainer.appendChild(playerPokemon);
+            break;
+        
+        case "water":
+            playerPokemon.src = "./images/squirtle.png";
+            pokemonContainer.appendChild(playerPokemon);
+            break;
+    
+        case "leaf":
+            break;
+    }
 }
