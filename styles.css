@@ -1,5 +1,8 @@
 body {
     margin: 0;
+    background-image: url("./images/pokemonBG.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .container {
@@ -7,14 +10,7 @@ body {
     justify-content: center;
 }
 
-.bg-img { 
-    background-image: url("./images/pokemonBG.jpeg");
-    background-position-x: center;
-    background-size: cover;
-    
-    /* figure out how to keep bg img to extend when flex wrapping trainers */
-    height: 100vh; 
-
+.container { 
     display: flex;
     flex-direction: column;
 }
@@ -43,7 +39,10 @@ body {
     align-items: center;
 }
 
-.trainer-1:hover {
+.trainer-1:hover,
+.trainer-2:hover,
+.trainer-3:hover,
+.trainer-4:hover {
     background-color: rgba(255, 253, 249, 0.685);
 }
 

@@ -111,18 +111,33 @@ while (playerScore < 5 && opponentScore < 5 && isPlaying) {
 const startButton = document.querySelector("#start-button");
     
 startButton.addEventListener('click', () => {
-    startGame();
+    goToSelectScreen();
     startButton.style.display = "none";
 });
 
-function startGame() {
+function goToSelectScreen() {
     let trainerSelectScreen = document.querySelector(".trainer-select");
 
     trainerSelectScreen.style.display = "flex";
 }
 
-const trainerSelectButton = document.querySelector(".trainer-1");
+const trainer1SelectButton = document.querySelector(".trainer-1");
+const trainer2SelectButton = document.querySelector(".trainer-2");
+const trainer3SelectButton = document.querySelector(".trainer-3");
+const trainer4SelectButton = document.querySelector(".trainer-4");
 
-trainerSelectButton.addEventListener("click", () => {
-    alert(trainerSelectButton.className);
+trainer1SelectButton.addEventListener("click", () => {
+    alert(trainer1SelectButton.className);
 });
+
+trainer2SelectButton.addEventListener("click", () => {
+    alert(trainer2SelectButton.className);
+})
+
+trainer3SelectButton.addEventListener("click", () => {
+    alert(trainer3SelectButton.className);
+})
+
+trainer4SelectButton.addEventListener("click", () => {
+    alert(trainer4SelectButton.className);
+})
