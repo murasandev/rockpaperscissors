@@ -232,6 +232,8 @@ function playRound(pokeType){
             break;
     
         case "leaf":
+            playerPokemon.src = "./images/bulbasaur.png";
+            pokemonContainer.appendChild(playerPokemon);
             break;
     }
 }
