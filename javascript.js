@@ -207,16 +207,16 @@ const firePokemonBtn = document.querySelector(".fire-pokemon-btn");
 const waterPokemonBtn = document.querySelector(".water-pokemon-btn");
 const leafPokemonBtn = document.querySelector(".leaf-pokemon-btn");
 
-let pokeType;
-
 firePokemonBtn.addEventListener("click", () => {
-    pokeType = "fire";
-    playRound(pokeType);
+    playRound("fire");
 })
 
 waterPokemonBtn.addEventListener("click", () => {
-    pokeType = "water";
-    playRound(pokeType);
+    playRound("water");
+})
+
+leafPokemonBtn.addEventListener("click", () => {
+    playRound("leaf");
 })
 
 function playRound(pokeType){
