@@ -9,49 +9,46 @@ let playerInt;
 let playerScore = 0,
     opponentScore = 0;
 
-//get random number for computer
-function getComputerChoice(max = 3) {
-    console.log(computerChoice = Math.floor(Math.random() * max));
-}
 
-// get input from player
-function getPlayerInput() {
-    playerInput = prompt("Enter \"Rock\", \"Paper\", or \"Scissors\": ");
-}
 
-// convert playerInput to lowercase
-function toLowerCasePlayerInput() {
-    if (playerInput !== null) {
-        playerInput = playerInput.toLowerCase();
-    }
-}
+// // get input from player
+// function getPlayerInput() {
+//     playerInput = prompt("Enter \"Rock\", \"Paper\", or \"Scissors\": ");
+// }
 
-// change playerInput to choice
-function convertPlayerChoice() {
-    switch(playerInput) {
-        case "rock":
-            playerInt = 0;
-            break;
+// // convert playerInput to lowercase
+// function toLowerCasePlayerInput() {
+//     if (playerInput !== null) {
+//         playerInput = playerInput.toLowerCase();
+//     }
+// }
+
+// // change playerInput to choice
+// function convertPlayerChoice() {
+//     switch(playerInput) {
+//         case "rock":
+//             playerInt = 0;
+//             break;
         
-        case "paper":
-            playerInt = 1;
-            break;
+//         case "paper":
+//             playerInt = 1;
+//             break;
 
-        case "scissors":
-            playerInt = 2;
-            break;
+//         case "scissors":
+//             playerInt = 2;
+//             break;
 
-        case null:
-            isPlaying = false;
-            break;
+//         case null:
+//             isPlaying = false;
+//             break;
 
-        default:
-            // alert("Enter a valid option");
-            getPlayerInput();
-            toLowerCasePlayerInput();
-            convertPlayerChoice();
-    }
-}
+//         default:
+//             // alert("Enter a valid option");
+//             getPlayerInput();
+//             toLowerCasePlayerInput();
+//             convertPlayerChoice();
+//     }
+// }
 
 // convert computer choice to pokemon
 let opponentPokemonImgContainer = document.querySelector(".opponent-pokemon");
@@ -59,24 +56,33 @@ let opponentPokemonImgContainer = document.querySelector(".opponent-pokemon");
 let opponentPokemonImg = document.createElement("img");
 opponentPokemonImg.style.height = "100px";
 
-function convertComputerChoice() {
+//get random number for computer
+function getComputerChoice(max = 3) {
+    computerChoice = Math.floor(Math.random() * max);
+
     switch(computerChoice) {
         case 0: //fire
             opponentPokemonImg.src = "./images/charmander.png";
             opponentPokemonImgContainer.appendChild(opponentPokemonImg);
+            computerChoiceString = "charmander";
             break;
 
         case 1: //water
             opponentPokemonImg.src = "./images/squirtle.png";
             opponentPokemonImgContainer.appendChild(opponentPokemonImg);
+            computerChoiceString = "squirtle";
             break;
         
         case 2: //leaf
             opponentPokemonImg.src = "./images/bulbasaur.png";
             opponentPokemonImgContainer.appendChild(opponentPokemonImg);
+            computerChoiceString = "bulbasaur";
             break;
     }
 }
+
+let opponentTextContainer = document.querySelector(".opponent-text-container");
+let opponentText = document.createElement("p");
 
 function determineRoundWinner(playerInt, computerChoice) {
     let outcome = computerChoice - playerInt;
@@ -86,35 +92,41 @@ function determineRoundWinner(playerInt, computerChoice) {
         case 1:
         case -2:
             console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`);
+            opponentText.textContent = `You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`;
+            opponentTextContainer.appendChild(opponentText);
             ++opponentScore;
             break;
 
         // tie condition
         case 0:
             console.log(`You both played ${playerInput}`);
+            opponentText.textContent = `You both played ${playerInput}`;
+            opponentTextContainer.appendChild(opponentText);
             break;
 
         // player win condition
         default:
             console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`);
+            opponentText.textContent = `You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`;
+            opponentTextContainer.appendChild(opponentText);
             ++playerScore;
             break;
     }
 }
 
-// run program through loop until you or opponent reach 5 pts
-while (playerScore < 5 && opponentScore < 5 && isPlaying) {
-    getComputerChoice();
-    getPlayerInput();
-    toLowerCasePlayerInput();
-    convertPlayerChoice();
-    convertComputerChoice();
-    if (isPlaying) {
-        determineRoundWinner(playerInt, computerChoice);
-    }
+// // run program through loop until you or opponent reach 5 pts
+// while (playerScore < 5 && opponentScore < 5 && isPlaying) {
+//     getComputerChoice();
+//     getPlayerInput();
+//     toLowerCasePlayerInput();
+//     convertPlayerChoice();
+//     convertComputerChoice();
+//     if (isPlaying) {
+//         determineRoundWinner(playerInt, computerChoice);
+//     }
     
-    console.log(`Player Score: ${playerScore}, Opponent Score: ${opponentScore}`);
-}
+//     console.log(`Player Score: ${playerScore}, Opponent Score: ${opponentScore}`);
+// }
 
 const startButton = document.querySelector("#start-button");
     
@@ -217,14 +229,23 @@ const leafPokemonBtn = document.querySelector(".leaf-pokemon-btn");
 
 firePokemonBtn.addEventListener("click", () => {
     playRound("fire");
+    playerInt = 0;
+    getComputerChoice();
+    determineRoundWinner(playerInt, computerChoice);
 })
 
 waterPokemonBtn.addEventListener("click", () => {
     playRound("water");
+    playerInt = 1;
+    getComputerChoice();
+    determineRoundWinner(playerInt, computerChoice);
 })
 
 leafPokemonBtn.addEventListener("click", () => {
     playRound("leaf");
+    playerInt = 2;
+    getComputerChoice();
+    determineRoundWinner(playerInt, computerChoice);
 })
 
 function playRound(pokeType){
@@ -232,16 +253,19 @@ function playRound(pokeType){
         case "fire":
             playerPokemon.src = "./images/charmander.png";
             pokemonContainer.appendChild(playerPokemon);
+            playerInput = "charmander";
             break;
         
         case "water":
             playerPokemon.src = "./images/squirtle.png";
             pokemonContainer.appendChild(playerPokemon);
+            playerInput = "squirtle";
             break;
     
         case "leaf":
             playerPokemon.src = "./images/bulbasaur.png";
             pokemonContainer.appendChild(playerPokemon);
+            playerInput = "bulbasaur";
             break;
     }
 }
