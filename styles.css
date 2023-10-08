@@ -69,7 +69,7 @@ h1 {
     width: 500px;
     display: none;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .opponent-container,
@@ -81,25 +81,27 @@ h1 {
     justify-content: space-around;
 }
 
-.player-container {
+.player-container,
+.opponent-container {
     background-color: rgba(255, 253, 249, 0.5);
     border-radius: 10px;
 }
 
-.opponent-container {
-    background-color: red;
-    align-self: flex-end;
-}
-
-.player-abil-info-container {
+.player-abil-info-container,
+.opponent-info-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
 }
 
-.trainer-pokemon {
+.trainer-pokemon,
+.opponent-pokemon {
     align-self: center;
+    height: 100px;
+}
+
+.opponent-pokemon img {
     height: 100px;
 }
 
@@ -133,4 +135,15 @@ h1 {
 
 .player-abilities button:hover {
     text-decoration: underline;
+}
+
+.opponent-lives img {
+    width: 20px;
+}
+
+.opponent-text-container {
+    background-color: whitesmoke;
+    height: 100px;
+    width: 250px;
+    border-radius: 10px;
 }

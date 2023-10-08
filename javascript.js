@@ -53,19 +53,27 @@ function convertPlayerChoice() {
     }
 }
 
-// convert computer choice to string
+// convert computer choice to pokemon
+let opponentPokemonImgContainer = document.querySelector(".opponent-pokemon");
+
+let opponentPokemonImg = document.createElement("img");
+opponentPokemonImg.style.height = "100px";
+
 function convertComputerChoice() {
     switch(computerChoice) {
-        case 0:
-            computerChoiceString = 'rock';
+        case 0: //fire
+            opponentPokemonImg.src = "./images/charmander.png";
+            opponentPokemonImgContainer.appendChild(opponentPokemonImg);
             break;
 
-        case 1:
-            computerChoiceString = 'paper';
+        case 1: //water
+            opponentPokemonImg.src = "./images/squirtle.png";
+            opponentPokemonImgContainer.appendChild(opponentPokemonImg);
             break;
         
-        case 2:
-            computerChoiceString = 'scissors';
+        case 2: //leaf
+            opponentPokemonImg.src = "./images/bulbasaur.png";
+            opponentPokemonImgContainer.appendChild(opponentPokemonImg);
             break;
     }
 }
