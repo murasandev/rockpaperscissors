@@ -115,6 +115,11 @@ function determineRoundWinner(playerInt, computerChoice) {
     }
 }
 
+function champion() {
+    opponentText.textContent = "Congratulations! You are the new World Champion!";
+    opponentTextContainer.appendChild(opponentText);
+}
+
 // // run program through loop until you or opponent reach 5 pts
 // while (playerScore < 5 && opponentScore < 5 && isPlaying) {
 //     getComputerChoice();
@@ -134,6 +139,7 @@ const startButton = document.querySelector("#start-button");
 startButton.addEventListener('click', () => {
     enableSelectScreen();
     startButton.style.display = "none";
+    setOpponentHP();
 });
 
 // Control player Select Screen
@@ -237,7 +243,6 @@ firePokemonBtn.addEventListener("click", () => {
     playerInt = 0;
     getComputerChoice();
     determineRoundWinner(playerInt, computerChoice);
-    changeOpponent();
 })
 
 waterPokemonBtn.addEventListener("click", () => {
@@ -277,14 +282,16 @@ function playRound(pokeType){
 }
 
 // set lives for player and opponent
-let opponentLives = 3;
-
 const opponentLivesContainer = document.querySelector(".opponent-lives");
+let opponentHPCounter;
 
-for (i = 0; i < opponentLives; i++) {
-    let lifeImg = document.createElement("img");
-    lifeImg.src = "./images/Poké_Ball_icon.png";
-    opponentLivesContainer.appendChild(lifeImg);
+function setOpponentHP(opponentLives = 3) {
+    opponentHPCounter = opponentLives;
+    for (i = 0; i < opponentLives; i++) {
+        let lifeImg = document.createElement("img");
+        lifeImg.src = "./images/Poké_Ball_icon.png";
+        opponentLivesContainer.appendChild(lifeImg);
+    }
 }
 
 const playerLivesContainer = document.querySelector(".player-lives");
@@ -306,6 +313,12 @@ function playerLoseHP() {
 function opponentLoseHP() {
     let removeHPImg = document.querySelector(".opponent-lives img");
     opponentLivesContainer.removeChild(removeHPImg);
+    opponentHPCounter--;
+
+    if (opponentHPCounter === 0 && opponentCounter < 4) {
+        setOpponentHP();
+        changeOpponent();
+    }
 }
 
 // Set Opponent
@@ -349,6 +362,7 @@ function changeOpponent() {
             // champion
             opponentTrainerImg.src = "./images/elite-four/pokemon-trophy.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
+            champion();
             break;
     }
 }
