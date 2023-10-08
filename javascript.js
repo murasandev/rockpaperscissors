@@ -108,6 +108,7 @@ function determineRoundWinner(playerInt, computerChoice) {
             console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`);
             opponentText.textContent = `You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`;
             opponentTextContainer.appendChild(opponentText);
+            
             ++playerScore;
             opponentLoseHP();
             break;
@@ -275,7 +276,7 @@ function playRound(pokeType){
 }
 
 // set lives for player and opponent
-let opponentLives = 5;
+let opponentLives = 3;
 
 const opponentLivesContainer = document.querySelector(".opponent-lives");
 
