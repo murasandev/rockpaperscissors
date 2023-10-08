@@ -93,6 +93,7 @@ function determineRoundWinner(playerInt, computerChoice) {
             opponentText.textContent = `You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`;
             opponentTextContainer.appendChild(opponentText);
             ++opponentScore;
+            playerLoseHP();
             break;
 
         // tie condition
@@ -108,6 +109,7 @@ function determineRoundWinner(playerInt, computerChoice) {
             opponentText.textContent = `You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`;
             opponentTextContainer.appendChild(opponentText);
             ++playerScore;
+            opponentLoseHP();
             break;
     }
 }
@@ -293,5 +295,14 @@ function setPlayerHP(numberOfLives) {
     }
 }
 
+// reduce player and opponent lives
+function playerLoseHP() {
+    let removeHPImg = document.querySelector(".player-lives img");
+    playerLivesContainer.removeChild(removeHPImg);
+}
 
+function opponentLoseHP() {
+    let removeHPImg = document.querySelector(".opponent-lives img");
+    opponentLivesContainer.removeChild(removeHPImg);
+}
 
