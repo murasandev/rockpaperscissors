@@ -146,4 +146,12 @@ h1 {
     height: 100px;
     width: 250px;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opponent-text-container p {
+    margin: 10px;
+    font-size: 12px;
 }

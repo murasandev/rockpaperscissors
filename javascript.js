@@ -9,8 +9,6 @@ let playerInt;
 let playerScore = 0,
     opponentScore = 0;
 
-
-
 // // get input from player
 // function getPlayerInput() {
 //     playerInput = prompt("Enter \"Rock\", \"Paper\", or \"Scissors\": ");
@@ -161,24 +159,28 @@ player1Btn.addEventListener("click", () => {
     // alert(player1SelectBtn.className);
     playGame();
     playerSelect("player-1");
+    setPlayerHP(7);
 });
 
 player2Btn.addEventListener("click", () => {
     // alert(player2Btn.className);
     playGame();
     playerSelect("player-2");
+    setPlayerHP(5);
 })
 
 player3Btn.addEventListener("click", () => {
     // alert(player3Btn.className);
     playGame();
     playerSelect("player-3");
+    setPlayerHP(5);
 })
 
 player4Btn.addEventListener("click", () => {
     // alert(player4Btn.className);
     playGame();
     playerSelect("player-4");
+    setPlayerHP(5);
 })
 
 function playerSelect(playerSelection){
@@ -269,3 +271,27 @@ function playRound(pokeType){
             break;
     }
 }
+
+// set lives for player and opponent
+let opponentLives = 5;
+
+const opponentLivesContainer = document.querySelector(".opponent-lives");
+
+for (i = 0; i < opponentLives; i++) {
+    let lifeImg = document.createElement("img");
+    lifeImg.src = "./images/Poké_Ball_icon.png";
+    opponentLivesContainer.appendChild(lifeImg);
+}
+
+const playerLivesContainer = document.querySelector(".player-lives");
+
+function setPlayerHP(numberOfLives) {
+    for (i = 0; i < numberOfLives; i++) {
+        let lifeImg = document.createElement("img");
+        lifeImg.src = "./images/Poké_Ball_icon.png";
+        playerLivesContainer.appendChild(lifeImg);
+    }
+}
+
+
+
