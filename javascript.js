@@ -340,5 +340,7 @@ switch(opponentCounter) {
 
     case 4:
         // champion
+        opponentTrainerImg.src = "./images/elite-four/pokemon-trophy.png";
+        opponentTrainerContainer.appendChild(opponentTrainerImg);
         break;
 }
