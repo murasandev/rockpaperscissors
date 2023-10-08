@@ -115,42 +115,77 @@ startButton.addEventListener('click', () => {
     startButton.style.display = "none";
 });
 
-// Control Trainer Select Screen
-let trainerSelectScreen = document.querySelector(".trainer-select");
+// Control player Select Screen
+let playerSelectScreen = document.querySelector(".trainer-select");
 
 function enableSelectScreen() {
-    trainerSelectScreen.style.display = "flex";
+    playerSelectScreen.style.display = "flex";
 }
 
 function disableSelectScreen() {
-    trainerSelectScreen.style.display = "none";
+    playerSelectScreen.style.display = "none";
 }
 
-const trainer1SelectButton = document.querySelector(".trainer-1");
-const trainer2SelectButton = document.querySelector(".trainer-2");
-const trainer3SelectButton = document.querySelector(".trainer-3");
-const trainer4SelectButton = document.querySelector(".trainer-4");
+// Set Player trainer to selected trainer
+const player1Btn = document.querySelector(".trainer-1");
+const player2Btn = document.querySelector(".trainer-2");
+const player3Btn = document.querySelector(".trainer-3");
+const player4Btn = document.querySelector(".trainer-4");
 
-trainer1SelectButton.addEventListener("click", () => {
-    // alert(trainer1SelectButton.className);
+let playerImgContainer = document.querySelector(".player-img");
+
+let playerImg = document.createElement("img");
+playerImg.style.height = "250px";
+
+player1Btn.addEventListener("click", () => {
+    // alert(player1SelectBtn.className);
     playGame();
+    playerSelect("player-1");
 });
 
-trainer2SelectButton.addEventListener("click", () => {
-    // alert(trainer2SelectButton.className);
+player2Btn.addEventListener("click", () => {
+    // alert(player2Btn.className);
     playGame();
+    playerSelect("player-2");
 })
 
-trainer3SelectButton.addEventListener("click", () => {
-    // alert(trainer3SelectButton.className);
+player3Btn.addEventListener("click", () => {
+    // alert(player3Btn.className);
     playGame();
+    playerSelect("player-3");
 })
 
-trainer4SelectButton.addEventListener("click", () => {
-    // alert(trainer4SelectButton.className);
+player4Btn.addEventListener("click", () => {
+    // alert(player4Btn.className);
     playGame();
+    playerSelect("player-4");
 })
 
+function playerSelect(playerSelection){
+    switch(playerSelection) {
+        case "player-1":
+            playerImg.src = "./images/poke-trainer-img/boy1_front.png"
+            playerImgContainer.appendChild(playerImg);
+            break;
+        
+        case "player-2":
+            playerImg.src = "./images/poke-trainer-img/boy2_front.png";
+            playerImgContainer.appendChild(playerImg);
+            break;
+    
+        case "player-3":
+            playerImg.src = "./images/poke-trainer-img/girl1_front.png";
+            playerImgContainer.appendChild(playerImg);
+            break;
+    
+        case "player-4":
+            playerImg.src = "./images/poke-trainer-img/girl2 front.png";
+            playerImgContainer.appendChild(playerImg);
+            break;
+    }
+}
+
+// Transition to Game screen from Trainer Select Screen
 const gameContainer = document.querySelector(".game-container");
 
 function enableGameContainer() {
