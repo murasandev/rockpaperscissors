@@ -307,3 +307,38 @@ function opponentLoseHP() {
     opponentLivesContainer.removeChild(removeHPImg);
 }
 
+// Set Opponent
+const opponentTrainerContainer = document.querySelector(".opponent-container .trainer-img");
+let opponentTrainerImg = document.createElement("img");
+
+let opponentCounter = 4;
+
+switch(opponentCounter) {
+    case 0:
+        // opponent 1
+        opponentTrainerImg.src = "./images/elite-four/trainer-drake.png";
+        opponentTrainerContainer.appendChild(opponentTrainerImg);
+        break;
+
+    case 1:
+        // opponent 2
+        opponentTrainerImg.src = "./images/elite-four/trainer-may.png";
+        opponentTrainerContainer.appendChild(opponentTrainerImg);
+        break;
+
+    case 2:
+        // opponent 3
+        opponentTrainerImg.src = "./images/elite-four/trainer-red.png";
+        opponentTrainerContainer.appendChild(opponentTrainerImg);
+        break;
+
+    case 3:
+        // opponent 4
+        opponentTrainerImg.src = "./images/elite-four/trainer-elise.png";
+        opponentTrainerContainer.appendChild(opponentTrainerImg);
+        break;
+
+    case 4:
+        // champion
+        break;
+}
