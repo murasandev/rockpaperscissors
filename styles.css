@@ -105,7 +105,9 @@ h1 {
     height: 100px;
 }
 
-.player-abilities {
+.player-btns,
+.player-abil-btns,
+.other-btns {
     background-color: whitesmoke;
     height: 100px;
     width: 250px;
@@ -115,17 +117,21 @@ h1 {
     justify-content: space-around;
 }
 
-.player-abilities p {
+.other-btns {
+    display: none;
+}
+
+.player-btns p {
     font-size: 10px;
     margin: 0 10px;
 }
 
-.player-abilities button {
+.player-btns button {
     background-color: whitesmoke;
     border: none;
 }
 
-.player-abilities button:hover {
+.player-btns button:hover {
     text-decoration: underline;
 }
 

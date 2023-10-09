@@ -9,45 +9,6 @@ let playerInt;
 let playerScore = 0,
     opponentScore = 0;
 
-// // get input from player
-// function getPlayerInput() {
-//     playerInput = prompt("Enter \"Rock\", \"Paper\", or \"Scissors\": ");
-// }
-
-// // convert playerInput to lowercase
-// function toLowerCasePlayerInput() {
-//     if (playerInput !== null) {
-//         playerInput = playerInput.toLowerCase();
-//     }
-// }
-
-// // change playerInput to choice
-// function convertPlayerChoice() {
-//     switch(playerInput) {
-//         case "rock":
-//             playerInt = 0;
-//             break;
-        
-//         case "paper":
-//             playerInt = 1;
-//             break;
-
-//         case "scissors":
-//             playerInt = 2;
-//             break;
-
-//         case null:
-//             isPlaying = false;
-//             break;
-
-//         default:
-//             // alert("Enter a valid option");
-//             getPlayerInput();
-//             toLowerCasePlayerInput();
-//             convertPlayerChoice();
-//     }
-// }
-
 // convert computer choice to pokemon
 let opponentPokemonImgContainer = document.querySelector(".opponent-pokemon");
 
@@ -118,21 +79,16 @@ function determineRoundWinner(playerInt, computerChoice) {
 function champion() {
     opponentText.textContent = "Congratulations! You are the new World Champion!";
     opponentTextContainer.appendChild(opponentText);
+    playerAbilBtns.style.display = "none";
+    otherBtns.style.display = "flex";
 }
 
-// // run program through loop until you or opponent reach 5 pts
-// while (playerScore < 5 && opponentScore < 5 && isPlaying) {
-//     getComputerChoice();
-//     getPlayerInput();
-//     toLowerCasePlayerInput();
-//     convertPlayerChoice();
-//     convertComputerChoice();
-//     if (isPlaying) {
-//         determineRoundWinner(playerInt, computerChoice);
-//     }
-    
-//     console.log(`Player Score: ${playerScore}, Opponent Score: ${opponentScore}`);
-// }
+function youLose() {
+    opponentText.textContent = "You lose! You have a lot to learn!";
+    opponentTextContainer.appendChild(opponentText);
+    playerAbilBtns.style.display = "none";
+    otherBtns.style.display = "flex";
+}
 
 const startButton = document.querySelector("#start-button");
     
@@ -223,6 +179,10 @@ function enableGameContainer() {
     gameContainer.style.display = "flex";
 }
 
+function disableGameContainer() {
+    gameContainer.style.display = "none";
+}
+
 function playGame() {
     disableSelectScreen();
     enableGameContainer();
@@ -233,6 +193,12 @@ const pokemonContainer = document.querySelector(".trainer-pokemon");
 
 let playerPokemon = document.createElement("img");
 playerPokemon.style.height = "100px";
+
+const playerAbilBtns = document.querySelector(".player-abil-btns");
+
+function enablePlayerAbilBtns() {
+    playerAbilBtns.style.display = "flex";
+}
 
 const firePokemonBtn = document.querySelector(".fire-pokemon-btn");
 const waterPokemonBtn = document.querySelector(".water-pokemon-btn");
@@ -295,8 +261,12 @@ function setOpponentHP(opponentLives = 3) {
 }
 
 const playerLivesContainer = document.querySelector(".player-lives");
+let playerLives;
+let maxHP;
 
 function setPlayerHP(numberOfLives) {
+    playerLives = numberOfLives;
+    maxHP = numberOfLives;
     for (i = 0; i < numberOfLives; i++) {
         let lifeImg = document.createElement("img");
         lifeImg.src = "./images/Poké_Ball_icon.png";
@@ -306,8 +276,14 @@ function setPlayerHP(numberOfLives) {
 
 // reduce player and opponent lives
 function playerLoseHP() {
-    let removeHPImg = document.querySelector(".player-lives img");
-    playerLivesContainer.removeChild(removeHPImg);
+    if (playerLives > 0) {
+        let removeHPImg = document.querySelector(".player-lives img");
+        playerLivesContainer.removeChild(removeHPImg);
+        playerLives--;
+    }
+    if (playerLives === 0) {
+        youLose();
+    }
 }
 
 function opponentLoseHP() {
@@ -365,4 +341,37 @@ function changeOpponent() {
             champion();
             break;
     }
+}
+
+// after game over change buttons to replay button
+const otherBtns = document.querySelector(".other-btns");
+
+function disableOtherBtns() {
+    otherBtns.style.display = "none";
+}
+
+const replayBtn = document.querySelector(".replay-btn");
+
+replayBtn.addEventListener("click", () => {
+    // restart game
+    enableSelectScreen();
+    disableGameContainer();
+    enablePlayerAbilBtns();
+    disableOtherBtns();
+
+    // resets opponent back to first trainer
+    opponentCounter = 0;
+    opponentTrainerImg.src = "./images/elite-four/trainer-drake.png";
+    opponentTrainerContainer.appendChild(opponentTrainerImg);
+
+    // reset opponent hp back to 3 lives
+    resetOpponentHP();
+})
+
+function resetOpponentHP() {
+    while(opponentLivesContainer.firstChild){
+        opponentLivesContainer.removeChild(opponentLivesContainer.firstChild);
+    }
+
+    setOpponentHP();
 }
