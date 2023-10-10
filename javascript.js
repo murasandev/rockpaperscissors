@@ -286,6 +286,14 @@ function playerLoseHP() {
     }
 }
 
+// add 1 hp to player lives
+function playerAddOneHP() {
+    let lifeImg = document.createElement("img");
+    lifeImg.src = "./images/Poké_Ball_icon.png";
+    playerLivesContainer.appendChild(lifeImg);
+    playerLives++;
+}
+
 function opponentLoseHP() {
     let removeHPImg = document.querySelector(".opponent-lives img");
     opponentLivesContainer.removeChild(removeHPImg);
@@ -294,6 +302,8 @@ function opponentLoseHP() {
     if (opponentHPCounter === 0 && opponentCounter < 4) {
         setOpponentHP();
         changeOpponent();
+
+        playerAddOneHP();
     }
 }
 
@@ -366,6 +376,9 @@ replayBtn.addEventListener("click", () => {
 
     // reset opponent hp back to 3 lives
     resetOpponentHP();
+
+    //reset player hp
+    resetPlayerHP();
 })
 
 function resetOpponentHP() {
@@ -374,4 +387,12 @@ function resetOpponentHP() {
     }
 
     setOpponentHP();
+}
+
+function resetPlayerHP() {
+    while(playerLivesContainer.firstChild){
+        playerLivesContainer.removeChild(playerLivesContainer.firstChild);
+    }
+
+    playerLives = 0;
 }
