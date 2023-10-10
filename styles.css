@@ -66,7 +66,7 @@ h1 {
 .game-container {
     /* background-color: white; */
     height: 75vh;
-    width: 500px;
+    width: 600px;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -79,12 +79,13 @@ h1 {
     align-items: center;
     margin: 25px;
     justify-content: space-around;
-}
-
-.player-container,
-.opponent-container {
     background-color: rgba(255, 253, 249, 0.5);
     border-radius: 10px;
+}
+
+.opponent-container {
+    justify-content: left;
+    gap: 50px;
 }
 
 .player-abil-info-container,
@@ -93,6 +94,10 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
+}
+
+.opponent-info-container {
+    margin-left: 30px;
 }
 
 .trainer-pokemon,
