@@ -193,7 +193,9 @@ h1 {
 }
 
 .opponent-text-container,
+.player-abil-btns,
 .player-btns button {
     font-family: pokemon-gb-font;
     font-size: 12px;
+    text-align: center;
 }
