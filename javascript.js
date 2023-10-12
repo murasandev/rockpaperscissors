@@ -50,8 +50,7 @@ function determineRoundWinner(playerInt, computerChoice) {
         // opponent win condition
         case 1:
         case -2:
-            console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`);
-            opponentText.textContent = `You played ${playerInput}, your opponent played ${computerChoiceString}. Your opponent won this round.`;
+            opponentText.textContent = `Heh... Too predictable!`;
             opponentTextContainer.appendChild(opponentText);
             ++opponentScore;
             playerLoseHP();
@@ -59,15 +58,13 @@ function determineRoundWinner(playerInt, computerChoice) {
 
         // tie condition
         case 0:
-            console.log(`You both played ${playerInput}`);
-            opponentText.textContent = `You both played ${playerInput}`;
+            opponentText.textContent = `Not as bad as you look kid.`;
             opponentTextContainer.appendChild(opponentText);
             break;
 
         // player win condition
         default:
-            console.log(`You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`);
-            opponentText.textContent = `You played ${playerInput}, your opponent played ${computerChoiceString}. You won this round!`;
+            opponentText.textContent = `You got lucky this round you little punk!`;
             opponentTextContainer.appendChild(opponentText);
             
             ++playerScore;
@@ -245,6 +242,8 @@ function playRound(pokeType){
             playerInput = "bulbasaur";
             break;
     }
+
+    playerAbilBtns.textContent = `I choose you ${playerInput}!`;
 }
 
 // set lives for player and opponent
@@ -318,6 +317,7 @@ let opponentCounter = 0;
 
 function changeOpponent() {
     opponentCounter++;
+    removeOpponentPokeImg();
 
     switch(opponentCounter) {
         case 0:
@@ -379,6 +379,8 @@ replayBtn.addEventListener("click", () => {
 
     //reset player hp
     resetPlayerHP();
+
+    resetOpponentText();
 })
 
 function resetOpponentHP() {
@@ -395,4 +397,28 @@ function resetPlayerHP() {
     }
 
     playerLives = 0;
+}
+
+function currentRound() {
+
+}
+
+function nextRound() {
+    // turn into an on click
+    //      say something like "I choose you charmander"
+    enablePlayerAbilBtns();
+    removeOpponentPokeImg();
+    resetOpponentText();
+}
+
+function resetOpponentText() {
+    opponentTextContainer.removeChild(opponentText);
+}
+
+function hidePlayerAbilBtns() {
+    playerAbilBtns.style.display = "none";
+}
+
+function removeOpponentPokeImg() {
+    opponentPokemonImgContainer.removeChild(opponentPokemonImg);
 }

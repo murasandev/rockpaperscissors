@@ -190,10 +190,10 @@ h1 {
 
 .opponent-text-container p {
     margin: 10px;
-    font-size: 12px;
 }
 
 .opponent-text-container,
 .player-btns button {
     font-family: pokemon-gb-font;
+    font-size: 12px;
 }
