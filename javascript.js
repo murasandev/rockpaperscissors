@@ -71,6 +71,9 @@ function determineRoundWinner(playerInt, computerChoice) {
             opponentLoseHP();
             break;
     }
+    if (!gameOver) {
+        setTimeout(nextRound, 1000);
+    }
 }
 
 function champion() {
@@ -222,6 +225,8 @@ leafPokemonBtn.addEventListener("click", () => {
     determineRoundWinner(playerInt, computerChoice);
 })
 
+const playerText = document.querySelector(".player-text");
+
 function playRound(pokeType){
     switch (pokeType) {
         case "fire":
@@ -243,7 +248,8 @@ function playRound(pokeType){
             break;
     }
 
-    playerAbilBtns.textContent = `I choose you ${playerInput}!`;
+    hidePlayerAbilBtns();
+    playerText.textContent = `I choose you ${playerInput}!`;
 }
 
 // set lives for player and opponent
@@ -282,6 +288,7 @@ function playerLoseHP() {
     }
     if (playerLives === 0) {
         youLose();
+        gameOver = true;
     }
 }
 
@@ -381,6 +388,8 @@ replayBtn.addEventListener("click", () => {
     resetPlayerHP();
 
     resetOpponentText();
+
+    gameOver = false;
 })
 
 function resetOpponentHP() {
@@ -399,16 +408,16 @@ function resetPlayerHP() {
     playerLives = 0;
 }
 
-function currentRound() {
-
-}
-
 function nextRound() {
-    // turn into an on click
-    //      say something like "I choose you charmander"
+    
     enablePlayerAbilBtns();
-    removeOpponentPokeImg();
-    resetOpponentText();
+    // removeOpponentPokeImg();
+    // resetOpponentText();
+    removePlayerPokeImg();
+    removePlayerText();
+
+    continueBool = false;
+    console.log("next round");
 }
 
 function resetOpponentText() {
@@ -422,3 +431,14 @@ function hidePlayerAbilBtns() {
 function removeOpponentPokeImg() {
     opponentPokemonImgContainer.removeChild(opponentPokemonImg);
 }
+
+function removePlayerText() {
+    playerText.textContent = "";
+}
+
+function removePlayerPokeImg() {
+    pokemonContainer.removeChild(playerPokemon);
+    
+}
+
+let gameOver = false;
