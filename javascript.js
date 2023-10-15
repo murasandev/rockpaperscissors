@@ -409,8 +409,10 @@ replayBtn.addEventListener("click", () => {
 
     //reset player hp
     resetPlayerHP();
+    removePlayerPokeImg();
 
     resetOpponentText();
+    removeOpponentPokeImg();
 
     gameOver = false;
 })
