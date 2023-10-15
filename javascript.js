@@ -16,7 +16,7 @@ let opponentPokemonImg = document.createElement("img");
 opponentPokemonImg.style.height = "100px";
 
 //get random number for computer
-function getComputerChoice(max = 3) {
+function getComputerChoice(max = 1) {
     computerChoice = Math.floor(Math.random() * max);
 
     switch(computerChoice) {
@@ -317,6 +317,21 @@ function opponentLoseHP() {
         
         if (trainerType === "resilient" && playerLives < 7) {
             playerAddOneHP();
+        }
+
+        else if (trainerType === "scout" && playerLives < 5) {
+            playerAddOneHP();
+        }
+
+        else if (trainerType === "warrior" && playerLives < 5) {
+            playerAddOneHP();
+        }
+
+        else if (trainerType === "nurturing" && playerLives < 5) {
+            livesCounter = 5 - playerLives;
+            for (i = 0; i < livesCounter; i++) {
+                playerAddOneHP();
+            }
         }
     }
 }
