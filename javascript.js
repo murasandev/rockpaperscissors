@@ -123,32 +123,34 @@ let playerImgContainer = document.querySelector(".player-img");
 let playerImg = document.createElement("img");
 playerImg.style.height = "250px";
 
+let trainerType;
+
 player1Btn.addEventListener("click", () => {
-    // alert(player1SelectBtn.className);
     playGame();
     playerSelect("player-1");
     setPlayerHP(7);
+    trainerType = "resilient";
 });
 
 player2Btn.addEventListener("click", () => {
-    // alert(player2Btn.className);
     playGame();
     playerSelect("player-2");
     setPlayerHP(5);
+    trainerType = "scout";
 })
 
 player3Btn.addEventListener("click", () => {
-    // alert(player3Btn.className);
     playGame();
     playerSelect("player-3");
     setPlayerHP(5);
+    trainerType = "warrior";
 })
 
 player4Btn.addEventListener("click", () => {
-    // alert(player4Btn.className);
     playGame();
     playerSelect("player-4");
     setPlayerHP(5);
+    trainerType = "nurturing";
 })
 
 function playerSelect(playerSelection){
@@ -312,7 +314,10 @@ function opponentLoseHP() {
         setOpponentHP();
         changeOpponent();
 
-        playerAddOneHP();
+        
+        if (trainerType === "resilient" && playerLives < 7) {
+            playerAddOneHP();
+        }
     }
 }
 
