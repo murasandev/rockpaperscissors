@@ -99,6 +99,8 @@ startButton.addEventListener('click', () => {
     enableSelectScreen();
     startButton.style.display = "none";
     setOpponentHP();
+
+    trainerTextType();
 });
 
 // Control player Select Screen
@@ -175,6 +177,7 @@ function playerSelect(playerSelection){
             playerImgContainer.appendChild(playerImg);
             break;
     }
+    textType.style.display = "none";
 }
 
 // Transition to Game screen from Trainer Select Screen
@@ -414,6 +417,8 @@ replayBtn.addEventListener("click", () => {
     resetOpponentText();
     removeOpponentPokeImg();
 
+    trainerTextType();
+
     gameOver = false;
 })
 
@@ -467,3 +472,37 @@ function removePlayerPokeImg() {
 }
 
 let gameOver = false;
+
+let typingCounter = 0;
+let text;
+const textType = document.querySelector(".intro-text");
+
+
+function typing() {
+    if (typingCounter < text.length) {
+        textType.innerHTML += text.charAt(typingCounter);
+        typingCounter++;
+        textTimeOut = setTimeout(typing, 35);
+    }
+}
+
+function introTextType(){
+    typingCounter = 0;
+    text = `Do you think you have what it takes
+            to become the next Pokemon World Champion?`;
+    typing();
+}
+
+function trainerTextType() {
+    textType.textContent = "";
+    textType.style.display = "flex";
+    typingCounter = 0;
+    text = `When you are ready, pick your trainer
+    and test your abilities against the
+    Elite Four!`;
+
+    typing();
+}
+
+introTextType();
+

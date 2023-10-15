@@ -28,6 +28,13 @@ h1 {
     font-size: 50px;
 }
 
+.intro-text {
+    font-family: pokemon-gb-font;
+    text-align: center;
+    max-width: 750px;
+    height: 75px;
+}
+
 .container { 
     display: flex;
     flex-direction: column;
@@ -45,7 +52,8 @@ h1 {
 .trainer-1,
 .trainer-2,
 .trainer-3,
-.trainer-4 {
+.trainer-4,
+#start-button {
     border: solid;
     border-color: black;
     height: 500px;
@@ -63,8 +71,13 @@ h1 {
 .trainer-1:hover,
 .trainer-2:hover,
 .trainer-3:hover,
-.trainer-4:hover {
+.trainer-4:hover,
+#start-button:hover {
     background-color: rgba(255, 253, 249, 0.685);
+}
+
+#start-button img {
+    height: 350px;
 }
 
 .trainer-img img,
@@ -188,7 +201,8 @@ h1 {
 .opponent-text-container,
 .player-abil-btns,
 .player-btns button,
-.player-text {
+.player-text,
+#start-button {
     font-family: pokemon-gb-font;
     font-size: 12px;
     text-align: center;
