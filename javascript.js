@@ -81,6 +81,8 @@ function champion() {
     opponentTextContainer.appendChild(opponentText);
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
+    gameOver = true;
+    removePlayerText();
 }
 
 function youLose() {
@@ -88,6 +90,7 @@ function youLose() {
     opponentTextContainer.appendChild(opponentText);
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
+    removePlayerText();
 }
 
 const startButton = document.querySelector("#start-button");
