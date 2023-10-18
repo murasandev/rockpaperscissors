@@ -70,24 +70,26 @@ function determineRoundWinner(playerInt, computerChoice) {
             break;
     }
     if (!gameOver) {
-        setTimeout(nextRound, 1000);
+        setTimeout(nextRound, 2000);
     }
 }
 
 function champion() {
+    removePlayerText();
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
     gameOver = true;
     opponentLoseTextOutput();
-    removePlayerText();
+    
 }
 
 function youLose() {
+    removePlayerText();
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
     gameOver = true;
     opponentWinTextOutput();
-    removePlayerText();
+    
 }
 
 const startButton = document.querySelector("#start-button");
@@ -238,23 +240,26 @@ function playRound(pokeType){
             playerPokemon.src = "./images/charmander.png";
             pokemonContainer.appendChild(playerPokemon);
             playerInput = "charmander";
+            playerTextOutput(`fire`);
             break;
         
         case "water":
             playerPokemon.src = "./images/squirtle.png";
             pokemonContainer.appendChild(playerPokemon);
             playerInput = "squirtle";
+            playerTextOutput(`water`);
             break;
     
         case "leaf":
             playerPokemon.src = "./images/bulbasaur.png";
             pokemonContainer.appendChild(playerPokemon);
             playerInput = "bulbasaur";
+            playerTextOutput(`leaf`);
             break;
     }
 
     hidePlayerAbilBtns();
-    playerText.textContent = `I choose you ${playerInput}!`;
+    // playerText.textContent = `I choose you ${playerInput}!`;
 }
 
 // set lives for player and opponent
@@ -415,6 +420,7 @@ replayBtn.addEventListener("click", () => {
     //reset player hp
     resetPlayerHP();
     removePlayerPokeImg();
+    removePlayerText();
 
     resetOpponentText();
     removeOpponentPokeImg();
@@ -442,7 +448,6 @@ function resetPlayerHP() {
 
 function nextRound() {
     enablePlayerAbilBtns();
-    removePlayerPokeImg();
     removePlayerText();
 }
 
@@ -591,4 +596,37 @@ function opponentTieTextOutput() {
     }
 
     opponentTyping();
+}
+
+// Battle Text Type Player
+let playerTypeCounter = 0;
+let playerTextToType;
+
+function playerTyping() {
+    if (playerTypeCounter < playerTextToType.length) {
+        playerText.innerHTML += playerTextToType.charAt(playerTypeCounter);
+        playerTypeCounter++;
+        setTimeout(playerTyping, 35);
+    }
+}
+
+function playerTextOutput(pokemonType) {
+    playerText.textContent = "";
+    playerTypeCounter = 0;
+
+    switch(pokemonType) {
+        case "fire":
+            playerTextToType = `I choose you Charmander!`;
+            break;
+
+        case "water":
+            playerTextToType = `I choose you Squirtle!`;
+            break;
+
+        case "leaf":
+            playerTextToType = `I choose you Bulbasaur!`;
+            break;
+    }
+
+    playerTyping();
 }
