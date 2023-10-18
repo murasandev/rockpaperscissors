@@ -83,8 +83,6 @@ function champion() {
 }
 
 function youLose() {
-    // opponentText.textContent = "You lose! You have a lot to learn!";
-    // opponentTextContainer.appendChild(opponentText);
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
     gameOver = true;
@@ -350,31 +348,35 @@ let opponentCounter = 0;
 
 function changeOpponent() {
     opponentCounter++;
-    removeOpponentPokeImg();
+    
 
     switch(opponentCounter) {
         case 0:
             // opponent 1
             opponentTrainerImg.src = "./images/elite-four/trainer-drake.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
+            removeOpponentPokeImg();
             break;
 
         case 1:
             // opponent 2
             opponentTrainerImg.src = "./images/elite-four/trainer-may.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
+            removeOpponentPokeImg();
             break;
 
         case 2:
             // opponent 3
             opponentTrainerImg.src = "./images/elite-four/trainer-red.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
+            removeOpponentPokeImg();
             break;
 
         case 3:
             // opponent 4
             opponentTrainerImg.src = "./images/elite-four/trainer-elise.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
+            removeOpponentPokeImg();
             break;
 
         case 4:
@@ -439,15 +441,9 @@ function resetPlayerHP() {
 }
 
 function nextRound() {
-    
     enablePlayerAbilBtns();
-    // removeOpponentPokeImg();
-    // resetOpponentText();
     removePlayerPokeImg();
     removePlayerText();
-
-    continueBool = false;
-    console.log("next round");
 }
 
 function resetOpponentText() {
