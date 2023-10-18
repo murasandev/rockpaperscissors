@@ -5,6 +5,7 @@ let computerChoiceString;
 
 let playerInput;
 let playerInt;
+let playerWin;
 
 let playerScore = 0,
     opponentScore = 0;
@@ -40,7 +41,7 @@ function getComputerChoice(max = 1) {
     }
 }
 
-let opponentTextContainer = document.querySelector(".opponent-text-container");
+const opponentTextContainer = document.querySelector(".opponent-text-container");
 let opponentText = document.createElement("p");
 
 function determineRoundWinner(playerInt, computerChoice) {
@@ -50,22 +51,19 @@ function determineRoundWinner(playerInt, computerChoice) {
         // opponent win condition
         case 1:
         case -2:
-            opponentText.textContent = `Heh... Too predictable!`;
-            opponentTextContainer.appendChild(opponentText);
+            opponentWinTextOutput();
             ++opponentScore;
             playerLoseHP();
             break;
 
         // tie condition
         case 0:
-            opponentText.textContent = `Not as bad as you look kid.`;
-            opponentTextContainer.appendChild(opponentText);
+            opponentTieTextOutput();
             break;
 
         // player win condition
         default:
-            opponentText.textContent = `You got lucky this round you little punk!`;
-            opponentTextContainer.appendChild(opponentText);
+            opponentLoseTextOutput();
             
             ++playerScore;
             opponentLoseHP();
@@ -77,19 +75,20 @@ function determineRoundWinner(playerInt, computerChoice) {
 }
 
 function champion() {
-    opponentText.textContent = "Congratulations! You are the new World Champion!";
-    opponentTextContainer.appendChild(opponentText);
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
     gameOver = true;
+    opponentLoseTextOutput();
     removePlayerText();
 }
 
 function youLose() {
-    opponentText.textContent = "You lose! You have a lot to learn!";
-    opponentTextContainer.appendChild(opponentText);
+    // opponentText.textContent = "You lose! You have a lot to learn!";
+    // opponentTextContainer.appendChild(opponentText);
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
+    gameOver = true;
+    opponentWinTextOutput();
     removePlayerText();
 }
 
@@ -100,7 +99,7 @@ startButton.addEventListener('click', () => {
     startButton.style.display = "none";
     setOpponentHP();
 
-    trainerTextType();
+    trainerSelectTextType();
 });
 
 // Control player Select Screen
@@ -297,6 +296,7 @@ function playerLoseHP() {
     if (playerLives === 0) {
         youLose();
         gameOver = true;
+        opponentWinTextOutput();
     }
 }
 
@@ -417,7 +417,7 @@ replayBtn.addEventListener("click", () => {
     resetOpponentText();
     removeOpponentPokeImg();
 
-    trainerTextType();
+    trainerSelectTextType();
 
     gameOver = false;
 })
@@ -451,7 +451,7 @@ function nextRound() {
 }
 
 function resetOpponentText() {
-    opponentTextContainer.removeChild(opponentText);
+    opponentTextContainer.textContent = "";
 }
 
 function hidePlayerAbilBtns() {
@@ -473,6 +473,7 @@ function removePlayerPokeImg() {
 
 let gameOver = false;
 
+// text type function for intro page and trainer select page
 let typingCounter = 0;
 let text;
 const textType = document.querySelector(".intro-text");
@@ -493,7 +494,7 @@ function introTextType(){
     typing();
 }
 
-function trainerTextType() {
+function trainerSelectTextType() {
     textType.textContent = "";
     textType.style.display = "flex";
     typingCounter = 0;
@@ -506,3 +507,92 @@ function trainerTextType() {
 
 introTextType();
 
+// Battle Text Type Opponent
+let opponentTypeCounter = 0;
+let opponentTextToType;
+
+function opponentTyping() {
+    if (opponentTypeCounter < opponentTextToType.length) {
+        opponentTextContainer.innerHTML += opponentTextToType.charAt(opponentTypeCounter);
+        opponentTypeCounter++;
+        setTimeout(opponentTyping, 35);
+    }
+}
+
+function opponentLoseTextOutput() {
+    let randomText = Math.floor(Math.random() * 3);
+    opponentTextContainer.textContent = "";
+    opponentTypeCounter = 0;
+
+    if(!gameOver) {
+        switch(randomText) {
+            case 0:
+                opponentTextToType = `Pft... Lucky! Let's see you do that again.`;
+                break;
+    
+            case 1:
+                opponentTextToType = `Well played Kiddo, smarter than you look...`;
+                break;
+    
+            case 2:
+                opponentTextToType = `I'm impressed... but only slightly.`;
+                break;
+        }
+    }
+    
+    else if(gameOver) {
+        opponentTextToType = `Congratulations! You are the new World Champion!`;
+    }
+
+    opponentTyping();
+}
+
+function opponentWinTextOutput() {
+    let randomText = Math.floor(Math.random() * 3);
+    opponentTextContainer.textContent = "";
+    opponentTypeCounter = 0;
+
+    if(!gameOver) {
+        switch(randomText) {
+            case 0:
+                opponentTextToType = `Hahaha... This is too easy!`;
+                break;
+    
+            case 1:
+                opponentTextToType = `Maybe you should study up next time...`;
+                break;
+    
+            case 2:
+                opponentTextToType = `This is boring...`;
+                break;
+        }
+    }
+    
+    else if(gameOver) {
+        opponentTextToType = `You lose! You have a lot to learn!`;
+    }
+
+    opponentTyping();
+}
+
+function opponentTieTextOutput() {
+    let randomText = Math.floor(Math.random() * 3);
+    opponentTextContainer.textContent = "";
+    opponentTypeCounter = 0;
+
+    switch(randomText) {
+        case 0:
+            opponentTextToType = `Okay... not bad, not bad!`;
+            break;
+
+        case 1:
+            opponentTextToType = `You know what they say! Great, uh, great...`;
+            break;
+
+        case 2:
+            opponentTextToType = `No blood...`;
+            break;
+    }
+
+    opponentTyping();
+}
