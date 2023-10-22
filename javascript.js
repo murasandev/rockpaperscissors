@@ -75,7 +75,7 @@ function determineRoundWinner(playerInt, computerChoice) {
 }
 
 function champion() {
-    removePlayerText();
+    hidePlayerTextContainer();
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
     gameOver = true;
@@ -84,7 +84,7 @@ function champion() {
 }
 
 function youLose() {
-    removePlayerText();
+    hidePlayerTextContainer();
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
     gameOver = true;
@@ -428,6 +428,8 @@ replayBtn.addEventListener("click", () => {
     trainerSelectTextType();
 
     gameOver = false;
+
+    showPlayerTextContainer();
 })
 
 function resetOpponentHP() {
@@ -465,6 +467,15 @@ function removeOpponentPokeImg() {
 
 function removePlayerText() {
     playerText.textContent = "";
+}
+
+function hidePlayerTextContainer() {
+    playerText.style.display = "none";
+}
+
+function showPlayerTextContainer() {
+    removePlayerText();
+    playerText.style.display = "initial";
 }
 
 function removePlayerPokeImg() {
