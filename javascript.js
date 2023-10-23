@@ -182,6 +182,7 @@ function playerSelect(playerSelection){
             break;
     }
     textType.style.display = "none";
+    opponentStartTextOutput(0);
 }
 
 // Transition to Game screen from Trainer Select Screen
@@ -383,30 +384,38 @@ function changeOpponent() {
     switch(opponentCounter) {
         case 0:
             // opponent 1
+            
             opponentTrainerImg.src = "./images/elite-four/trainer-drake.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
+            opponentStartTextOutput(0);
             break;
 
         case 1:
             // opponent 2
+            
             opponentTrainerImg.src = "./images/elite-four/trainer-may.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
+            opponentStartTextOutput(1);
             break;
 
         case 2:
             // opponent 3
+            
             opponentTrainerImg.src = "./images/elite-four/trainer-red.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
+            opponentStartTextOutput(2);
             break;
 
         case 3:
             // opponent 4
+            
             opponentTrainerImg.src = "./images/elite-four/trainer-elise.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
+            opponentStartTextOutput(3);
             break;
 
         case 4:
@@ -651,6 +660,30 @@ function opponentCounteredTextOutput() {
         case 2:
             opponentTextToType = `How are you countering me!?`;
             break;
+    }
+
+    opponentTyping();
+}
+
+function opponentStartTextOutput(textChoice) {
+    opponentTextContainer.textContent = "";
+    opponentTypeCounter = 0;
+
+    switch(textChoice) {
+        case 0:
+            opponentTextToType = `Let's see what you got punk!`;
+            break;
+
+        case 1:
+            opponentTextToType = `Just warning ya... I'm tougher than I look!`;
+            break;
+
+        case 2:
+            opponentTextToType = `Bring it on... This should be quick.`;
+            break;
+        
+        case 3:
+            opponentTextToType = `Think you got what it takes to be the champ?`
     }
 
     opponentTyping();
