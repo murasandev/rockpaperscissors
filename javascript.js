@@ -17,7 +17,7 @@ let opponentPokemonImg = document.createElement("img");
 opponentPokemonImg.style.height = "100px";
 
 //get random number for computer
-function getComputerChoice(max = 1) {
+function getComputerChoice(max = 3) {
     computerChoice = Math.floor(Math.random() * max);
 
     switch(computerChoice) {
@@ -81,6 +81,7 @@ function determineRoundWinner(playerInt, computerChoice) {
 
 function champion() {
     hidePlayerTextContainer();
+    removeOpponentPokeImg();
     playerAbilBtns.style.display = "none";
     otherBtns.style.display = "flex";
     gameOver = true;
@@ -265,7 +266,6 @@ function playRound(pokeType){
     }
 
     hidePlayerAbilBtns();
-    // playerText.textContent = `I choose you ${playerInput}!`;
 }
 
 // set lives for player and opponent
@@ -317,9 +317,8 @@ function warriorLoseHP() {
 
     if (counterAttackNumber === 0) {
         // win
-        opponentLoseHP();
         opponentCounteredTextOutput();
-        console.log("counterattack");
+        opponentLoseHP();
     }
 
     else {
@@ -384,7 +383,6 @@ function changeOpponent() {
     switch(opponentCounter) {
         case 0:
             // opponent 1
-            
             opponentTrainerImg.src = "./images/elite-four/trainer-drake.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
@@ -393,7 +391,6 @@ function changeOpponent() {
 
         case 1:
             // opponent 2
-            
             opponentTrainerImg.src = "./images/elite-four/trainer-may.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
@@ -402,7 +399,6 @@ function changeOpponent() {
 
         case 2:
             // opponent 3
-            
             opponentTrainerImg.src = "./images/elite-four/trainer-red.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
@@ -411,7 +407,6 @@ function changeOpponent() {
 
         case 3:
             // opponent 4
-            
             opponentTrainerImg.src = "./images/elite-four/trainer-elise.png";
             opponentTrainerContainer.appendChild(opponentTrainerImg);
             removeOpponentPokeImg();
@@ -448,16 +443,13 @@ replayBtn.addEventListener("click", () => {
     opponentTrainerImg.src = "./images/elite-four/trainer-drake.png";
     opponentTrainerContainer.appendChild(opponentTrainerImg);
 
-    // reset opponent hp back to 3 lives
     resetOpponentHP();
 
-    //reset player hp
     resetPlayerHP();
     removePlayerPokeImg();
     removePlayerText();
 
     resetOpponentText();
-    removeOpponentPokeImg();
 
     trainerSelectTextType();
 
