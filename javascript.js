@@ -17,7 +17,7 @@ let opponentPokemonImg = document.createElement("img");
 opponentPokemonImg.style.height = "100px";
 
 //get random number for computer
-function getComputerChoice(max = 3) {
+function getComputerChoice(max = 1) {
     computerChoice = Math.floor(Math.random() * max);
 
     switch(computerChoice) {
@@ -82,16 +82,16 @@ function determineRoundWinner(playerInt, computerChoice) {
 function champion() {
     hidePlayerTextContainer();
     removeOpponentPokeImg();
-    playerAbilBtns.style.display = "none";
+    hidePlayerAbilBtns();
     otherBtns.style.display = "flex";
     gameOver = true;
     opponentLoseTextOutput();
-    
 }
 
 function youLose() {
     hidePlayerTextContainer();
-    playerAbilBtns.style.display = "none";
+    removeOpponentPokeImg();
+    hidePlayerAbilBtns();
     otherBtns.style.display = "flex";
     gameOver = true;
     opponentWinTextOutput();
@@ -342,8 +342,10 @@ function opponentLoseHP() {
     opponentHPCounter--;
 
     if (opponentHPCounter === 0 && opponentCounter < 4) {
-        setOpponentHP();
-        changeOpponent();
+        setTimeout(()=> {
+            setOpponentHP();
+            changeOpponent();
+        }, 2000);
 
         // adds hp after defeating opponent based on class type
         if (trainerType === "resilient" && playerLives < 7) {
@@ -378,7 +380,6 @@ let opponentCounter = 0;
 
 function changeOpponent() {
     opponentCounter++;
-    
 
     switch(opponentCounter) {
         case 0:
