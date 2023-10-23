@@ -102,6 +102,7 @@ const startButton = document.querySelector("#start-button");
     
 startButton.addEventListener('click', () => {
     enableSelectScreen();
+    playMusic();
     startButton.style.display = "none";
     setOpponentHP();
 
@@ -713,4 +714,10 @@ function playerTextOutput(pokemonType) {
     }
 
     playerTyping();
+}
+
+function playMusic() {
+    const bgMusic = document.querySelector("#bg-Music");
+    bgMusic.volume = .025;
+    bgMusic.play();
 }
