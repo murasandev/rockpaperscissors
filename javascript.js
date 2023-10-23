@@ -17,7 +17,7 @@ let opponentPokemonImg = document.createElement("img");
 opponentPokemonImg.style.height = "100px";
 
 //get random number for computer
-function getComputerChoice(max = 1) {
+function getComputerChoice(max = 3) {
     computerChoice = Math.floor(Math.random() * max);
 
     switch(computerChoice) {
