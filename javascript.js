@@ -317,6 +317,7 @@ function warriorLoseHP() {
     if (counterAttackNumber === 0) {
         // win
         opponentLoseHP();
+        opponentCounteredTextOutput();
         console.log("counterattack");
     }
 
@@ -627,6 +628,28 @@ function opponentTieTextOutput() {
 
         case 2:
             opponentTextToType = `No blood...`;
+            break;
+    }
+
+    opponentTyping();
+}
+
+function opponentCounteredTextOutput() {
+    let randomText = Math.floor(Math.random() * 3);
+    opponentTextContainer.textContent = "";
+    opponentTypeCounter = 0;
+
+    switch(randomText) {
+        case 0:
+            opponentTextToType = `Wha... Countered... How!?!?!?`;
+            break;
+
+        case 1:
+            opponentTextToType = `Countered... That's blasphemy!!!`;
+            break;
+
+        case 2:
+            opponentTextToType = `How are you countering me!?`;
             break;
     }
 
