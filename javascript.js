@@ -51,9 +51,14 @@ function determineRoundWinner(playerInt, computerChoice) {
         // opponent win condition
         case 1:
         case -2:
-            opponentWinTextOutput();
-            ++opponentScore;
-            playerLoseHP();
+            if (trainerType === "warrior") {
+                warriorLoseHP();
+            }
+            else {
+                opponentWinTextOutput();
+                ++opponentScore;
+                playerLoseHP();
+            }
             break;
 
         // tie condition
@@ -303,6 +308,25 @@ function playerLoseHP() {
     }
 }
 
+function warriorLoseHP() {
+    let counterAttackNumber;
+
+    counterAttackNumber = Math.floor(Math.random() * 4);
+    console.log(counterAttackNumber);
+
+    if (counterAttackNumber === 0) {
+        // win
+        opponentLoseHP();
+        console.log("counterattack");
+    }
+
+    else {
+        opponentWinTextOutput();
+        ++opponentScore;
+        playerLoseHP();
+    }
+}
+
 // add 1 hp to player lives
 function playerAddOneHP() {
     let lifeImg = document.createElement("img");
@@ -320,7 +344,7 @@ function opponentLoseHP() {
         setOpponentHP();
         changeOpponent();
 
-        
+        // adds hp after defeating opponent based on class type
         if (trainerType === "resilient" && playerLives < 7) {
             playerAddOneHP();
         }
