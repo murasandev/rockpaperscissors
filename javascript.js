@@ -345,7 +345,7 @@ function opponentLoseHP() {
         setTimeout(()=> {
             setOpponentHP();
             changeOpponent();
-        }, 2000);
+        }, 2001);
 
         // adds hp after defeating opponent based on class type
         if (trainerType === "resilient" && playerLives < 7) {
